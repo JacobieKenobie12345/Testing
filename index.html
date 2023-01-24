@@ -1,9 +1,376 @@
-<!-- This Script is from www.htmlfreecodes.com, Provided by: Mahmood Bina -->
-<script type='text/javascript' src='http://m.free-codes.org/gh.php?id=2001'></script>
-<center>
-<font face="Arial"><b>You will be redirected to the script in<br><br>
-<form>
-<input type="text" size="3" id="timer" name="redirect2" value="5">
-</form>
-seconds</b></font>
-</center>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>LinkedIn Colleague Search</title>
+  <style type="text/css" media="screen">
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, font, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-weight: inherit;
+      font-style: inherit;
+      font-size: 100%;
+      font-family: inherit;
+      vertical-align: baseline;
+    }
+    
+    /* remember to define focus styles! */
+    :focus {
+      outline: 0;
+    }
+    body {
+      line-height: 1;
+      color: black;
+      background: white;
+    }
+    ol, ul {
+      list-style: none;
+    }
+    /* tables still need 'cellspacing="0"' in the markup */
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    caption, th, td {
+      text-align: left;
+      font-weight: normal;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+      content: "";
+    }
+    blockquote, q {
+      quotes: "" "";
+    }
+  </style>
+  <style type="text/css" media="screen">
+    #body {
+      margin: 0 auto;
+    }
+    
+    .wrapper {
+      background-color: white;
+      padding: 20px;
+      width: 252px;
+      -moz-box-shadow: 0 0 10px 4px #888;
+    }
+    
+    .title {
+      font-weight: bold;
+      font-size: 1.2em;
+      height: 30px;
+    }
+    
+    .inputs {
+      height: 30px;
+      width: 252px;
+      padding-bottom: 10px;
+    }
+    
+    #keywords {
+      border: 1px solid #ccc;
+      padding: 3px 5px 1px;
+      width: 217px;
+      height: 17px;
+      -moz-border-radius: 3px 0px 0px 3px;
+    }
+    
+    #search {
+      -moz-border-radius: 0px 3px 3px 0px;
+      background: url("http://static02.linkedin.com/scds/common/u/img/sprite/sprite_global_v5.png") no-repeat scroll -9px -1199px #0076A8;
+      border: 1px solid #06598B;
+      color: #0076A8;
+      cursor: pointer;
+      height: 23px;
+      width: 19px;
+      text-indent: -9999px;
+      left: -4px;
+      position: relative;
+    }
+    
+    ul.user-list {
+      list-style: none;
+      width: 252px;
+    }
+    
+    li.user {
+      float: left;
+      height: 61px;
+      width: 61px;
+      position: relative;
+      margin-right: 2px;
+      margin-bottom: 2px;
+    }
+    
+    .user.first {
+      clear: left;
+    }
+    
+    .profile-photo {
+      height: 61px;
+      width: 61px;
+      background-color: #AAA;
+      cursor: pointer;
+    }
+    
+    .profile-info {
+      display: none;
+      position: absolute;
+      height: 87px;
+      width: 248px;
+      z-index: 20;
+      background-color: #FFF;
+      -moz-box-shadow: 0 0 10px 4px #888;
+      -webkit-box-shadow: 0 0 10px 4px#888;
+      box-shadow: 0 0 10px 4px #888;
+    }
+    
+    .bottom {
+      bottom: -90px;
+    }
+    
+    .top {
+      bottom: 64px;
+    }
+    
+    .col-1 {
+      left: 0px;
+    }
+    
+    .col-2 {
+      left: -63px;
+    }
+   
+    .col-3 {
+      left: -126px;
+    }
+    
+    .col-4 {
+      left: -189px;
+    }
+    
+    .profile-info .content {
+      position: relative;
+      margin: 10px;
+    }
+    
+    .profile-info .close {
+      background: url("http://static02.linkedin.com/scds/common/u/img/sprite/sprite_global_v5.png") no-repeat scroll 100% -1496px transparent;
+      display: block;
+      height: 14px;
+      text-indent: -12345px;
+      width: 14px;
+      float: right;
+    }
+    
+    .name {
+      color: #006699;
+      font-size: 120%;
+      text-decoration: none;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .headline {
+      font-size: 90%;
+      font-weight: bold;
+      margin-top: 3px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .location {
+      color: #999999;
+      font-size: 90%;
+      margin-top: 3px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .action {
+      text-decoration: none;
+      font-size: 90%;
+      color: green;
+    }
+   
+     
+    .top .notch {
+      background: url("notch_sprite.png") no-repeat scroll 0px -12px transparent; 
+      height: 12px;
+      width: 20px;
+      position: absolute;
+      bottom: 0px;  
+      top: 87px;
+    }
+    
+    .bottom .notch {
+      background: url("notch_sprite.png") no-repeat scroll 0px 0px transparent; 
+      height: 12px;
+      width: 20px;
+      position: absolute;
+      top: -11px;
+    }
+    
+    
+    .col-1 .notch {
+      left: 17px;
+    }
+    
+    .col-2 .notch {
+      left: 80px;
+    }
+    
+    .col-3 .notch {
+      left: 143px;
+    }
+    
+    .col-4 .notch {
+      left: 206px;  
+    }
+    
+  </style>
+  <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="https://github.com/janl/mustache.js/raw/master/mustache.js"></script>
+  <script type="text/javascript">
+  // WARNING: If your XDRPC is on same host, you MUST adjust document.domain to the lowest common denominator
+  document.domain = "linkedin.biz";
+  </script>
+</head>
+<body style="background: #ccc">
+  
+  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+    api_key: gHoGjcBjHOisdh4F7u7c6_qRhLFowv7CIcSN1VOr8yP4EUyTAwxYD6KIOIi4rvei
+    authorize: true
+    extensions: SearchCompany@http://szhang-mn.linkedin.biz/~szhang/search2/searchcompany.js
+  </script>
+  
+  <div id="body">
+    <div class="wrapper">
+      <div class="title">Find your colleagues</div>
+      <div class="inputs">
+        <input id="keywords" type="text" placeholder="search any keywords" name="keywords"></input>
+        <input id="search" type="submit" value="Search" name="search"></input>
+      </div>
+      <script type="IN/SearchCompany" data-id="1337"></script>
+    </div>
+  </div>
+</body>
+</html>
+searchcompany.js
+/*jslint white:false */
+/*globals IN, Mustache, Sslac, console */
+IN.$extensions("SearchCompany", function SearchCompany() {
+  // NOTE: This is required for development in linkedin.biz domains
+  var ORIGINAL_XDURL = IN.ENV.url.xd_us_html;
+  // END REQUIRED
+  
+  Sslac.Class("IN.Tags.SearchCompany").Extends("IN.Tags.Base").Constructor(function(el, attributes) {
+    this.Parent(el, attributes);
+
+    // NOTE: This is required for development on linken.biz domains
+    IN.ENV.url.xd_us_html = "http://szhang-mn.linkedin.biz/~szhang/search2/xdrpc.html";
+    // END REQUIRED
+    
+    var that = this;
+    
+    IN.Event.onOnce(IN, "auth", function () {
+      IN.API.Raw("people-search:(people:(id,first-name,last-name,headline,picture-url,location,site-standard-profile-request,industry,distance))?count=21&facet=current-company," + attributes.id)
+          .result(function peopleSearchCallback(result) { 
+            var view, template, markup;
+            
+            view = { users: result.people.values };
+            
+            
+            for (i=0; i<view.users.length; i++)
+            {
+              curRow = (i+1) / 4;
+              view.users[i].row =  curRow <= 3 ? "bottom" : "top";
+              view.users[i].col = i % 4 + 1; 
+              view.users[i].pictureUrl = view.users[i].pictureUrl == undefined ? "http://static02.linkedin.com/scds/common/u/img/icon/icon_no_photo_40x40.png" : view.users[i].pictureUrl;
+              view.users[i].action = view.users[i].distance == 1 ? "SEND MESSAGE" : "CONNECT";
+            }
+            
+            console.log(view);
+            
+            template = [
+              '<ul class="user-list">',
+              '{{#users}}',
+              '  <li class="user">',
+              '    <img src="{{pictureUrl}}" class="profile-photo"/>',
+              '    <div class="profile-info {{row}} col-{{col}}">',
+              '      <div class="notch"></div>',
+              '      <div class="content">',
+              '        <span>',
+              '        <a class="name" href="{{#siteStandardProfileRequest}}{{url}}{{/siteStandardProfileRequest}}" target="_blank">{{firstName}} {{lastName}}</a>',
+              '        <span class="close"></span>',    
+              '        </span>',
+              '        <h3 class="headline">{{headline}}</h3>',
+              '        <h4 class="location">{{#location}}{{name}}{{/location}}</h4>',
+              '        <a class="action" href="{{#siteStandardProfileRequest}}{{url}}{{/siteStandardProfileRequest}}" target="_blank">{{action}}</a>',
+              
+              '      </div>',
+              '    </div>',
+              '  </li>',
+              '{{/users}}',
+              '</ul>'
+            ].join('');
+            
+            
+            
+            // Do stuff here.
+            
+            // Parse data and render.
+            
+            markup = Mustache.to_html(template, view);
+            // console.log(markup);
+            that.el().innerHTML = markup;
+            
+            $('.user-list').ready(function () {
+              var people = $('.profile-photo');
+
+              people.click(function () {
+                $('.user .profile-info').hide()
+                $(this).siblings('.profile-info').show();
+              });
+
+              $('.profile-info .close').click(function () {
+                $(this).parents('.profile-info').hide();
+              })
+            });
+        });
+    });
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    // var win = new IN.Objects.SmartWindow({
+    //   mode: "embedded",
+    //   url: "http://jheuser-md.linkedin.biz/~hackday/hackday/plugin/plugin.html"
+    // });
+    // win.place(this.el());
+    
+    // NOTE: This is required for development on linken.biz domains
+    IN.ENV.url.xd_us_html = ORIGINAL_XDURL;
+    // END REQUIRED
+  });
+
+  IN.addTag("SearchCompany", IN.Tags.SearchCompany);
+
+  // console.log("HelloWorld Extension has Executed");
+});
