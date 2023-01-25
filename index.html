@@ -1,266 +1,34 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-  <title>LinkedIn Colleague Search</title>
-  <style type="text/css" media="screen">
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, font, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      outline: 0;
-      font-weight: inherit;
-      font-style: inherit;
-      font-size: 100%;
-      font-family: inherit;
-      vertical-align: baseline;
-    }
-    
-    /* remember to define focus styles! */
-    :focus {
-      outline: 0;
-    }
-    body {
-      line-height: 1;
-      color: black;
-      background: white;
-    }
-    ol, ul {
-      list-style: none;
-    }
-    /* tables still need 'cellspacing="0"' in the markup */
-    table {
-      border-collapse: separate;
-      border-spacing: 0;
-    }
-    caption, th, td {
-      text-align: left;
-      font-weight: normal;
-    }
-    blockquote:before, blockquote:after,
-    q:before, q:after {
-      content: "";
-    }
-    blockquote, q {
-      quotes: "" "";
-    }
-  </style>
-  <style type="text/css" media="screen">
-    #body {
-      margin: 0 auto;
-    }
-    
-    .wrapper {
-      background-color: white;
-      padding: 20px;
-      width: 252px;
-      -moz-box-shadow: 0 0 10px 4px #888;
-    }
-    
-    .title {
-      font-weight: bold;
-      font-size: 1.2em;
-      height: 30px;
-    }
-    
-    .inputs {
-      height: 30px;
-      width: 252px;
-      padding-bottom: 10px;
-    }
-    
-    #keywords {
-      border: 1px solid #ccc;
-      padding: 3px 5px 1px;
-      width: 217px;
-      height: 17px;
-      -moz-border-radius: 3px 0px 0px 3px;
-    }
-    
-    #search {
-      -moz-border-radius: 0px 3px 3px 0px;
-      background: url("http://static02.linkedin.com/scds/common/u/img/sprite/sprite_global_v5.png") no-repeat scroll -9px -1199px #0076A8;
-      border: 1px solid #06598B;
-      color: #0076A8;
-      cursor: pointer;
-      height: 23px;
-      width: 19px;
-      text-indent: -9999px;
-      left: -4px;
-      position: relative;
-    }
-    
-    ul.user-list {
-      list-style: none;
-      width: 252px;
-    }
-    
-    li.user {
-      float: left;
-      height: 61px;
-      width: 61px;
-      position: relative;
-      margin-right: 2px;
-      margin-bottom: 2px;
-    }
-    
-    .user.first {
-      clear: left;
-    }
-    
-    .profile-photo {
-      height: 61px;
-      width: 61px;
-      background-color: #AAA;
-      cursor: pointer;
-    }
-    
-    .profile-info {
-      display: none;
-      position: absolute;
-      height: 87px;
-      width: 248px;
-      z-index: 20;
-      background-color: #FFF;
-      -moz-box-shadow: 0 0 10px 4px #888;
-      -webkit-box-shadow: 0 0 10px 4px#888;
-      box-shadow: 0 0 10px 4px #888;
-    }
-    
-    .bottom {
-      bottom: -90px;
-    }
-    
-    .top {
-      bottom: 64px;
-    }
-    
-    .col-1 {
-      left: 0px;
-    }
-    
-    .col-2 {
-      left: -63px;
-    }
-   
-    .col-3 {
-      left: -126px;
-    }
-    
-    .col-4 {
-      left: -189px;
-    }
-    
-    .profile-info .content {
-      position: relative;
-      margin: 10px;
-    }
-    
-    .profile-info .close {
-      background: url("http://static02.linkedin.com/scds/common/u/img/sprite/sprite_global_v5.png") no-repeat scroll 100% -1496px transparent;
-      display: block;
-      height: 14px;
-      text-indent: -12345px;
-      width: 14px;
-      float: right;
-    }
-    
-    .name {
-      color: #006699;
-      font-size: 120%;
-      text-decoration: none;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    
-    .headline {
-      font-size: 90%;
-      font-weight: bold;
-      margin-top: 3px;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    
-    .location {
-      color: #999999;
-      font-size: 90%;
-      margin-top: 3px;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    
-    .action {
-      text-decoration: none;
-      font-size: 90%;
-      color: green;
-    }
-   
-     
-    .top .notch {
-      background: url("notch_sprite.png") no-repeat scroll 0px -12px transparent; 
-      height: 12px;
-      width: 20px;
-      position: absolute;
-      bottom: 0px;  
-      top: 87px;
-    }
-    
-    .bottom .notch {
-      background: url("notch_sprite.png") no-repeat scroll 0px 0px transparent; 
-      height: 12px;
-      width: 20px;
-      position: absolute;
-      top: -11px;
-    }
-    
-    
-    .col-1 .notch {
-      left: 17px;
-    }
-    
-    .col-2 .notch {
-      left: 80px;
-    }
-    
-    .col-3 .notch {
-      left: 143px;
-    }
-    
-    .col-4 .notch {
-      left: 206px;  
-    }
-    
-  </style>
-  <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="https://github.com/janl/mustache.js/raw/master/mustache.js"></script>
-  <script type="text/javascript">
-  // WARNING: If your XDRPC is on same host, you MUST adjust document.domain to the lowest common denominator
-  document.domain = "linkedin.biz";
-  </script>
+<html lang="en"
+    itemscope itemtype="http://schema.org/Organization"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:og="http://opengraphprotocol.org/schema/"
+    xmlns:fb="http://www.facebook.com/2008/fbml">
+<head prefix="og: http://ogp.me/ns# khanacademy: http://ogp.me/ns/apps/khanacademy#">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Khan Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link rel='canonical' href='/science/ap-chemistry-beta/x2eef969c74e0d802:equilibrium/x2eef969c74e0d802:calculating-equilibrium-concentrations/e/calculating-equilibrium-concentrations'><meta property='og:url' content='/science/ap-chemistry-beta/x2eef969c74e0d802:equilibrium/x2eef969c74e0d802:calculating-equilibrium-concentrations/e/calculating-equilibrium-concentrations'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.kastatic.org/genwebpack/prod/en/javascript/app-shell-package/app-entry.96347cd55b42fe30ec9c.css"/>
+    <link rel="shortcut icon" href="https://cdn.kastatic.org/images/favicon.ico?logo">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://cdn.kastatic.org/images/apple-touch-icon-57x57-precomposed.new.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.kastatic.org/images/apple-touch-icon-72x72-precomposed.new.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://cdn.kastatic.org/images/apple-touch-icon-114x114-precomposed.new.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.kastatic.org/images/apple-touch-icon-144x144-precomposed.new.png"/>
+    <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;</script><script async src='https://www.google-analytics.com/analytics.js'></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSX5PBP');</script><script async src='https://www.googleoptimize.com/optimize.js?id=OPT-WR3FSPJ'></script>
 </head>
-<body style="background: #ccc">
-  
-  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-    api_key: gHoGjcBjHOisdh4F7u7c6_qRhLFowv7CIcSN1VOr8yP4EUyTAwxYD6KIOIi4rvei
-    authorize: true
-    extensions: SearchCompany@http://szhang-mn.linkedin.biz/~szhang/search2/searchcompany.js
-  </script>
-  
-  <div id="body">
-    <div class="wrapper">
-      <div class="title">Find your colleagues</div>
-      <div class="inputs">
-        <input id="keywords" type="text" placeholder="search any keywords" name="keywords"></input>
-        <input id="search" type="submit" value="Search" name="search"></input>
-      </div>
-      <script type="IN/SearchCompany" data-id="1337"></script>
+<body class="lang-en">
+    <div id="outer-wrapper" style="position:relative;z-index:0;" class="clearfix bibliotron-header white-outer-wrapper">
+        <div id="page-container" class="full-bleed">
+            <div id="page-container-inner">
+                <div id="fb-root"></div>
+                <div class="box-sizing-border-box-reset">
+                    <div id="app-shell-root"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</body>
-</html>
+        <script>__HEADERS__ = {"X-KA-is-e2e":"false","X-KA-is-phone":"false","X-KA-is-tablet":"false","X-KA-is-unsupported-browser":"false","X-KA-is-ios":"false","X-Fastly-Country":"US","X-KA-Lang":"en","X-KA-Locale":"en","X-KA-Locale-Status":"","X-KA-Curriculum":"us-nocc","X-KA-has-any-permissions":"false","X-KA-may-be-under13":"false","X-KA-is-phantom":"false","X-KA-Static-Version":"230125-0757-be30011f294a","X-KA-Published-Content-Version":"4cbb5ac427d41d55cd0b20446cd4971c787f435c"}</script>
+    
+    
+    <script src="https://cdn.kastatic.org/genwebpack/prod/en/runtime.f794d472e15a2bbf7913.js"></script>
+    <script src="https://cdn.kastatic.org/genwebpack/prod/en/javascript/app-shell-package/app-entry.bd8d994f0d10dfd9eb2c.js"></script>
